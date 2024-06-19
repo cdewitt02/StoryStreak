@@ -1,0 +1,26 @@
+
+body {
+    background-image: linear-gradient(45deg, #F0F7EE 0%, #C4D7F2 100%);
+}    
+
+.landing{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'EB Garamond', Garamond, serif;
+}
+
+header{
+    font-size: 2.5rem; 
+    color: #564951; 
+    font-weight: bold; 
+    /* margin-top: 1rem; */
+}
+
+section p {
+    font-size: 1.2rem; /* Increase font size for better readability */
+    color: #564951; /* Slightly lighter text color */
+    line-height: 1.6; /* Increase line height for better readability */
+  }
