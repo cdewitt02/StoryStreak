@@ -7,6 +7,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     email = models.EmailField(blank=True)
+    streak = models.PositiveIntegerField(default=0)
+    last_post_date = models.DateField(null=True, blank=True)
+    posted_today = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
@@ -34,29 +37,27 @@ class Tag(models.Model):
         return self.name
 
 class Post(models.Model):
-    STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
-    )
-
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
-    excerpt = models.TextField(blank=True)
     published_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    categories = models.ManyToManyField(Category, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
-
+    likes_count = models.PositiveIntegerField(default=0)
+    
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+            unique_slug = self.slug
+            num = 1
+            while Post.objects.filter(slug=unique_slug).exists():
+                unique_slug = f'{self.slug}-{num}'
+                num += 1
+            self.slug = unique_slug
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):

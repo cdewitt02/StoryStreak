@@ -13,13 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from "@mui/icons-material/Adb";
 import { ThemeProvider } from "@emotion/react";
-import theme from "./Theme";
-import {Navigate, useNavigate} from "react-router-dom";
+import theme from "../components/Theme";
+import { useNavigate} from "react-router-dom";
 import {Logout} from "../App"
 
 
-const pages = ["Read", "Write"];
-const settings = ["Profile", "Logout"];
+const pages = ["Read", "Write", "My Posts"];
+const settings = ["Login", "Logout", "Register"];
 
 
 function NavBar() {
@@ -37,11 +37,11 @@ function NavBar() {
 
   const handleSettingsClick = (e) => {
     var route = e.target.textContent.toLowerCase()
-    if (route === 'profile'){
-      navigate('/profile')
-    }else{
+    if (route === 'Logout'){
       Logout();
       window.location.reload();
+    }else{
+      navigate(`/${route}`)
     }
   }
   const handleLogoClick = () => {
@@ -50,12 +50,16 @@ function NavBar() {
 
   const handleNav = (e) => {
     var route = e.target.textContent.toLowerCase()
+    route = route.replace(/ /g, '')
+    console.log(route)
     setAnchorElNav(null);
     navigate(`/${route}`)
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (e) => {
+    var route = e.target.textContent.toLowerCase()
     setAnchorElNav(null);
+    navigate(`/${route}`)
   };
 
   const handleCloseUserMenu = () => {

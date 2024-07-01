@@ -2,3 +2,4 @@ env/
 *.pyc
 backend/db.sqlite3
 *.env
+frontend/package-lock.json

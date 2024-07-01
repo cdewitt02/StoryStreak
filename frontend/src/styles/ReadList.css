@@ -1,0 +1,25 @@
+
+.read-list {
+    overflow-y: inherit;
+    max-height: 100vh; /* Adjust height as needed */
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+    color: #564951;
+    width: 80vw;
+
+  }
+  
+  .read-item {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #564951;
+    border-radius: 4px;
+    background-color: #AFDEDC;
+    transition: background-color 0.3s ease;
+  }
+  
+  .read-item:hover {
+    background-color: #f0f0f0;
+  }
+  

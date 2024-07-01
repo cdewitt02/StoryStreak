@@ -8,7 +8,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NavBar from "./pages/NavBar";
 import Write from "./pages/Write";
 import Read from "./pages/Read";
-import Profile from "./pages/Profile";
+import ReadDetail from "./pages/ReadDetail";
+import MyPosts from "./pages/MyPosts";
+import UpdatePost from "./pages/UpdatePost";
 
 export const Logout = () => {
   localStorage.clear();
@@ -26,18 +28,34 @@ function App() {
       <NavBar />
       <Routes>
         <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/write"
           element={
             <ProtectedRoute>
               <Write />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/myposts"
+          element={
+            <ProtectedRoute>
+              <MyPosts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/update/:slug"
+          element={
+            <ProtectedRoute>
+              <UpdatePost />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/read/:slug"
+          element={
+            <ProtectedRoute>
+              <ReadDetail />
             </ProtectedRoute>
           }
         />
@@ -49,14 +67,8 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/" element={<Home />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
