@@ -149,7 +149,7 @@ function Write() {
             value={content}
             onChange={setContent}
             modules={modules}
-            className="quill-editor"
+            // className="quill-editor"
             style={{ height: 500, width: 1200 }}
           />
         </div>
