@@ -14,6 +14,7 @@ function Home() {
           fontFamily={"EB Garamond"}
           color={"secondary"}
           align="center"
+          margin={10}
           noWrap
         >
           Become the writer you want to be
@@ -24,6 +25,7 @@ function Home() {
             fontFamily={"EB Garamond"}
             color={"secondary"}
             align="center"
+            margin={10}
             noWrap
           >
             StoryStreak is a application that allows for writers to share their
@@ -34,6 +36,7 @@ function Home() {
             fontFamily={"EB Garamond"}
             color={"secondary"}
             align="center"
+            margin={10}
             noWrap
           >
             Write a story and get your streak started today!
